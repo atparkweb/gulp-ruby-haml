@@ -54,6 +54,7 @@ module.exports = function (opt) {
 
     cp.on('close', function (code) {
       if (errors) {
+        errors += '\nfile path: ' + file.path;
         self.emit('error', new PluginError(PLUGIN_NAME, errors));
         return callback(null, null);
       }
